@@ -77,7 +77,7 @@
     <Compile Include="AdvancedMenu.cs" />
     <Compile Include="FileManagement.cs" />
     <Compile Include="Checksums.cs" />
-    <Compile Include="Ediabas.cs" />
+    <Compile Include="EdiabasFuncs.cs" />
     <Compile Include="Ui.cs" />
     <Compile Include="MSS6x.cs" />
     <Compile Include="Conversions.cs" />

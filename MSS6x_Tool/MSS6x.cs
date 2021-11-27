@@ -699,16 +699,19 @@ namespace MSS6x_Tool
             return !stockRsaSegments.SequenceEqual(rsaSegments2Injection) && !stockRsaSegments.SequenceEqual(rsaSegments2Ignition);
         }
 
-        public static async Task<bool> FlashTune(byte[] tune, bool fromRsaBypassRoutine)
+        public static async Task<bool> FlashTune(byte[] tune, bool fromRsaBypassRoutine, bool skipDisclaimer = false)
         {
-            if (!Global.SuccessfulIdentify)
+            if (!skipDisclaimer)
             {
-                await Ui.Message("Identify DME First", "Please connect to your car and identify your DME first.");
-                return false;
-            }
+                if (!Global.SuccessfulIdentify)
+                {
+                    await Ui.Message("Identify DME First", "Please connect to your car and identify your DME first.");
+                    return false;
+                }
 
-            var run = await Ui.Message("Flash Tune", Ui.Disclaimer, "Continue", "Cancel", true);
-            if (!run) return false;
+                var run = await Ui.Message("Flash Tune", Ui.Disclaimer, "Continue", "Cancel", true);
+                if (!run) return false;
+            }
 
             var success = true;
             var isSigValid = Checksums.IsParamSignatureValid(tune);
@@ -878,7 +881,7 @@ namespace MSS6x_Tool
                         Ui.UpdateProgressBar(0);
                     }
                 }
-                await IdentifyDme();
+                if (!skipDisclaimer) await IdentifyDme();
                 return success;
             }
         }
@@ -1085,22 +1088,37 @@ namespace MSS6x_Tool
                         if (!EdiabasFuncs.ExecuteJob(ediabas, "FLASH_PROGRAMMIER_STATUS_LESEN", string.Empty))
                         {
                             success = false;
-                            return;
                         }
-                        Ui.StatusText("Resetting DME");
-                        EdiabasFuncs.ExecuteJob(ediabas, "STEUERGERAETE_RESET", string.Empty);
                     });
 
                     if (success)
                     {
-                        Ui.StatusText(bypassRsa ? "RSA Bypass accepted. Preparing DME for program" : "Program flash success. Flash tune to finish");
                         Ui.UpdateProgressBar(0);
 
-                        if (!EdiabasFuncs.ExecuteJob(ediabas, "STEUERGERAETE_RESET", string.Empty))
-                            return false;
+                        if (!bypassRsa)
+                        {
+                            Ui.StatusText("Flashing tune");
+                            await FlashTune(full
+                                .Skip(0x70000)
+                                .Take(0x10000)
+                                .Concat(full
+                                .Skip(0x2F0000)
+                                .Take(0x10000))
+                                .ToArray(),
+                                false,
+                                true);
+                        }
+                        else
+                        {
+                            Ui.StatusText("RSA Bypass accepted. Preparing DME for program");
+                            if (!EdiabasFuncs.ExecuteJob(ediabas, "STEUERGERAETE_RESET", string.Empty))
+                                return false;
+                        }
                     }
                     else
+                    {
                         Ui.StatusText("Flash failed");
+                    }
                 }
                 await IdentifyDme();
                 return success;

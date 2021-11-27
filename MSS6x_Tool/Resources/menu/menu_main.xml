@@ -40,14 +40,11 @@
       android:orderInCategory="100"
       android:title="Reset Codes"
       app:showAsAction="never" />
-  </group>
-
-  <group android:id="@+id/grp5">
     <item
-      android:id="@+id/Register_Battery"
-      android:orderInCategory="100"
-      android:title="Register Battery"
-      app:showAsAction="never" />
+	  android:id="@+id/Register_Battery"
+	  android:orderInCategory="100"
+	  android:title="Register Battery"
+	  app:showAsAction="never" />
   </group>
 
   <group android:id="@+id/grp2">

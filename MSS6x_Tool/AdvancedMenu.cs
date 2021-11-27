@@ -4,6 +4,8 @@ using Android.Hardware.Usb;
 using Android.Views;
 using Xamarin.Essentials;
 
+// ReSharper disable StringLiteralTypo
+
 namespace MSS6x_Tool
 {
     internal static class AdvancedMenu
