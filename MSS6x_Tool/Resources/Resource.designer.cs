@@ -6389,10 +6389,10 @@ namespace MSS6x_Tool
 			public const int @fixed = 2131230947;
 			
 			// aapt resource value: 0x7F08000D
-			public const int FlashDME = 2131230733;
+			public const int FlashFull = 2131230733;
 			
 			// aapt resource value: 0x7F08000E
-			public const int FlashProgram = 2131230734;
+			public const int FlashTune = 2131230734;
 			
 			// aapt resource value: 0x7F0800E4
 			public const int flip = 2131230948;
