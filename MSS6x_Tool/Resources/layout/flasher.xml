@@ -34,7 +34,7 @@
             android:enabled="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/FlashDME"
+            android:id="@+id/FlashTune"
             android:width="150dp" />
         <Button
             android:text="@string/ReadFull"
@@ -48,7 +48,7 @@
             android:enabled="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/FlashProgram"
+            android:id="@+id/FlashFull"
             android:width="150dp" />
         <Button
             android:text="@string/LoadFile"

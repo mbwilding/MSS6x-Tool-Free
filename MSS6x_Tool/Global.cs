@@ -19,7 +19,7 @@ namespace MSS6x_Tool
         public static string HwRef;
         public static string Zif;
         public static string FileName;
-        public const string DateFormat = "yyyy-MM-dd_HHmm";
+        public const string DateFormat = "yyyy-MM-dd_HHmm_ss_fff";
         public const string SgbdReading = "ms_s65.prg";
         public const string SgbdFlashing = "10flash.prg";
         public const string SavePath = @"/storage/emulated/0/Download/MSS6x/";

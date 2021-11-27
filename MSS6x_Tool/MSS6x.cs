@@ -122,6 +122,7 @@ namespace MSS6x_Tool
         {
             Global.BinaryFile = null;
 
+            Ui.VehicleInfo.Visibility = ViewStates.Invisible;
             Ui.ModelBox.Text = string.Empty;
             Ui.EngineBox.Text = string.Empty;
             Ui.DmeTypeBox.Text = string.Empty;
@@ -149,8 +150,8 @@ namespace MSS6x_Tool
                 {
                     MainThread.BeginInvokeOnMainThread(() =>
                     {
-                        Ui.FlashDme.Enabled = false;
-                        Ui.FlashProgram.Enabled = false;
+                        Ui.FlashTune.Enabled = false;
+                        Ui.FlashFull.Enabled = false;
                         AdvancedMenu.Menu.FindItem(Resource.Id.RSA_Bypass_Fast)?.SetEnabled(false);
                         Ui.StatusTextBlock.Text = string.Empty;
                     });
@@ -187,8 +188,8 @@ namespace MSS6x_Tool
 
                             MainThread.BeginInvokeOnMainThread(() =>
                             {
-                                Ui.FlashDme.Enabled = true;
-                                Ui.FlashProgram.Enabled = false;
+                                Ui.FlashTune.Enabled = true;
+                                Ui.FlashFull.Enabled = false;
                                 AdvancedMenu.Menu.FindItem(Resource.Id.RSA_Bypass_Fast)?.SetEnabled(false);
                             });
                         }
@@ -196,8 +197,8 @@ namespace MSS6x_Tool
                         {
                             MainThread.BeginInvokeOnMainThread(() =>
                             {
-                                Ui.FlashDme.Enabled = false;
-                                Ui.FlashProgram.Enabled = false;
+                                Ui.FlashTune.Enabled = false;
+                                Ui.FlashFull.Enabled = false;
                                 AdvancedMenu.Menu.FindItem(Resource.Id.RSA_Bypass_Fast)?.SetEnabled(false);
                             });
                         }
@@ -220,8 +221,8 @@ namespace MSS6x_Tool
 
                             MainThread.BeginInvokeOnMainThread(() =>
                             {
-                                Ui.FlashDme.Enabled = true;
-                                Ui.FlashProgram.Enabled = true;
+                                Ui.FlashTune.Enabled = true;
+                                Ui.FlashFull.Enabled = true;
                                 AdvancedMenu.Menu.FindItem(Resource.Id.RSA_Bypass_Fast)?.SetEnabled(true);
                             });
                         }
@@ -229,8 +230,8 @@ namespace MSS6x_Tool
                         {
                             MainThread.BeginInvokeOnMainThread(() =>
                             {
-                                Ui.FlashDme.Enabled = false;
-                                Ui.FlashProgram.Enabled = false;
+                                Ui.FlashTune.Enabled = false;
+                                Ui.FlashFull.Enabled = false;
                                 AdvancedMenu.Menu.FindItem(Resource.Id.RSA_Bypass_Fast)?.SetEnabled(false);
                             });
                         }
@@ -243,8 +244,8 @@ namespace MSS6x_Tool
 
                         MainThread.BeginInvokeOnMainThread(() =>
                         {
-                            Ui.FlashDme.Enabled = false;
-                            Ui.FlashProgram.Enabled = false;
+                            Ui.FlashTune.Enabled = false;
+                            Ui.FlashFull.Enabled = false;
                             AdvancedMenu.Menu.FindItem(Resource.Id.RSA_Bypass_Fast)?.SetEnabled(false);
                         });
                         break;
@@ -273,18 +274,21 @@ namespace MSS6x_Tool
                     default:
                         MainThread.BeginInvokeOnMainThread(() =>
                         {
-                            Ui.FlashDme.Enabled = false;
+                            Ui.FlashTune.Enabled = false;
                             Global.BinaryFile = null;
                         });
                         break;
                 }
             }
-            MainThread.BeginInvokeOnMainThread(() =>
+
+            if (Ui.FlashTune.Enabled)
             {
-                Ui.VehicleInfo.Visibility = ViewStates.Visible;
-            });
-            if (filePath != string.Empty)
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    Ui.VehicleInfo.Visibility = ViewStates.Visible;
+                });
                 Ui.StatusText($"Loaded\n{Path.GetFileNameWithoutExtension(filePath)}");
+            }
         }
 
         public static void Transferring(bool status)
