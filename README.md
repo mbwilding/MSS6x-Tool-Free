@@ -1,4 +1,4 @@
-# MSS6x Tool Free
+# MSS6x Tool
 
 ![Promo Image](https://github.com/mbwilding/MSS6x-Tool-Free/blob/main/promo.png?raw=true)
 
