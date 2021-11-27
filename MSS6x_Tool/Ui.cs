@@ -45,7 +45,7 @@ namespace MSS6x_Tool
             ReadTune = Activity.FindViewById<Button>(Resource.Id.ReadTune);
             ReadFull = Activity.FindViewById<Button>(Resource.Id.ReadFull);
             FlashTune = Activity.FindViewById<Button>(Resource.Id.FlashTune);
-            FlashFull = Activity.FindViewById<Button>(Resource.Id.FlashProgram);
+            FlashFull = Activity.FindViewById<Button>(Resource.Id.FlashFull);
             StatusTextBlock = Activity.FindViewById<TextView>(Resource.Id.statusTextBlock);
             IdentifyDme!.Click += IdentifyDME_Click;
             LoadFile!.Click += LoadFile_Click;
