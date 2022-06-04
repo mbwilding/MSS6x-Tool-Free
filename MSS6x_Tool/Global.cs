@@ -1,4 +1,5 @@
-﻿using Android.App;
+﻿using System.IO;
+using Android.App;
 using Android.Hardware.Usb;
 using Android.OS;
 using Environment = System.Environment;
@@ -19,13 +20,12 @@ namespace MSS6x_Tool
         public static string HwRef;
         public static string Zif;
         public static string FileName;
-        public const string DateFormat = "yyyy-MM-dd_HHmm_ss_fff";
+        public const string DateFormat = "yyyy-MM-dd_HHmm_ss";
         public const string SgbdReading = "ms_s65.prg";
         public const string SgbdFlashing = "10flash.prg";
         public const string SavePath = @"/storage/emulated/0/Download/MSS6x/";
-        public static string EcuPath = Environment.GetFolderPath(
-                                            Environment.SpecialFolder.ApplicationData)
-                                            + @"/ecu/";
+        public static readonly string EcuPath = Environment.GetFolderPath(
+            Environment.SpecialFolder.ApplicationData) + @"/ecu/";
 
         public static Activity Activity;
         public static UsbManager UsbManager;

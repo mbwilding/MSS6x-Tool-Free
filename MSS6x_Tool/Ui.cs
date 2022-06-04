@@ -249,7 +249,7 @@ namespace MSS6x_Tool
             if (!Global.IsFlashing)
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    ViewSwitcher.ShowNext();
+                    _ = Message("Pro Feature", Pro);
                 });
         }
 

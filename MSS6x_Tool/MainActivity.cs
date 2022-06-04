@@ -38,7 +38,6 @@ namespace MSS6x_Tool
             {
                 Manifest.Permission.WriteExternalStorage,
                 Manifest.Permission.ReadExternalStorage,
-                Manifest.Permission.ManageExternalStorage,
                 Manifest.Permission.BatteryStats,
                 Manifest.Permission.WakeLock,
                 Manifest.Permission.Internet

@@ -30,7 +30,7 @@ namespace MSS6x_Tool
         {
             try
             {
-                var cachePath = "/storage/emulated/0/Android/data/com.argentraceworx.mss6xtoolfree/cache/";
+                var cachePath = "/storage/emulated/0/Android/data/com.argentraceworx.mss6xfree/cache/";
 
                 // If exist, delete the cache directory and everything in it recursively
                 if (Directory.Exists(cachePath))
