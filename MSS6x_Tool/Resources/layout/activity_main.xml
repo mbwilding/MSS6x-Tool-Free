@@ -30,13 +30,6 @@
       <include layout="@layout/flasher" />
     </LinearLayout>
 
-    <LinearLayout
-      android:id="@+id/ViewTweaks"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent" >
-      <include layout="@layout/tweaks" />
-    </LinearLayout>
-
   </ViewSwitcher>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
