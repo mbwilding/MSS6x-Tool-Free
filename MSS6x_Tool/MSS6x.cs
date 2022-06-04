@@ -174,7 +174,7 @@ namespace MSS6x_Tool
                                 Ui.VinBox.Text = Global.Vin = Conversions.OffsetToAscii(0x20000, 7);
                                 Global.BinaryFile = Global.BinaryFile.Take(0x20000).ToArray();
                             }
-                            Ui.HwRefBox.Text = Conversions.OffsetToAscii(0x256, 7);
+                            Ui.HwRefBox.Text = Global.HwRef = Conversions.OffsetToAscii(0x256, 7);
                             var zifTemp = Conversions.OffsetToAscii(0x25E, 4);
                             if (zifTemp == "240E") zifTemp = "241E";
                             Ui.ZifBox.Text = Global.Zif = zifTemp;
@@ -209,7 +209,7 @@ namespace MSS6x_Tool
                         try
                         {
                             Ui.VinBox.Text = Global.Vin = Conversions.OffsetToAscii(0x7E01, 7);
-                            Ui.HwRefBox.Text = Conversions.OffsetToAscii(0x7DC0, 7);
+                            Ui.HwRefBox.Text = Global.HwRef = Conversions.OffsetToAscii(0x7DC0, 7);
                             Ui.ZifBox.Text = Global.Zif = Conversions.OffsetToAscii(0x10250, 4);
                             Ui.SwRefBox.Text = Conversions.OffsetToAscii(0x70262, 5);
                         }
